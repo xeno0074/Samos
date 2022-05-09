@@ -9,6 +9,7 @@
 
 //  Typedefs
 typedef uint8_t Uint8;
+typedef uint32_t Uint32;
 
 //  DEFINES
 static constexpr Uint8 BYTE_SZ = 8;

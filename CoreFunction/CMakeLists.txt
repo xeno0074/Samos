@@ -7,4 +7,4 @@ file(GLOB source "src/*.cpp")
 include_directories(inc/)
 
 #compile library
-add_library(Sample STATIC ${source})
+add_library(CoreFunction STATIC ${source})
