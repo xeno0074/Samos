@@ -7,4 +7,4 @@ file(GLOB source "src/*.cpp")
 include_directories(inc/)
 
 #compile module
-#add_library(Utility STATIC ${source})
+add_library(Utility STATIC ${source})
