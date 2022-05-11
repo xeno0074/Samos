@@ -5,5 +5,5 @@
 #include "doctest.cpp"
 
 TEST_CASE("add Entry Test") {
-
+  REQUIRE(1 == 0);
 }

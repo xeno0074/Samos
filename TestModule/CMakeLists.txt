@@ -20,7 +20,7 @@ include_directories(${header_paths})
 
 #compile target
 add_executable(SampleTest SampleTest.cpp)
-add_executable(FunctionTest SampleTest.cpp)
+add_executable(FunctionTest FunctionTest.cpp)
 
 #link libraries
 target_link_libraries(SampleTest ${modules})

@@ -1,5 +1,3 @@
-#ifndef SAMOSC_DOCTEST
-
 #if defined(DOCTEST_CONFIG_IMPLEMENT) || !defined(DOCTEST_SINGLE_HEADER)
 
 #ifndef DOCTEST_SINGLE_HEADER
@@ -3855,7 +3853,6 @@ public:
 
 #endif// DOCTEST_CONFIG_DISABLE
 
-#define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #ifdef DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 DOCTEST_MSVC_SUPPRESS_WARNING_WITH_PUSH(4007)// 'function' : must be 'attribute' - see issue #182
 int main(int argc, char **argv) { return doctest::Context(argc, argv).run(); }
@@ -3870,5 +3867,3 @@ DOCTEST_SUPPRESS_COMMON_WARNINGS_POP
 
 #endif// DOCTEST_LIBRARY_IMPLEMENTATION
 #endif// DOCTEST_CONFIG_IMPLEMENT
-
-#endif//  SAMOS_DOCTEST
