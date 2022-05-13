@@ -7,16 +7,28 @@
 
 #include "CoreFunction.h"
 
-class CoreTest {
-  Core *mCore;
+class CoreTest {// CoreTest class as Meyer's Singleton
+  Core *pCore;
+
+  CoreTest() {
+    pCore = nullptr;
+  }
 
   public:
-  CoreTest() {
-    mCore = new Core();
+  static CoreTest &getInstance() {
+    static CoreTest ct;
+    return ct;
   }
-  ~CoreTest() {
-    delete mCore;
-    mCore = nullptr;
+  ~CoreTest() = default;
+  CoreTest(const CoreTest &) = delete;
+  void operator=(const CoreTest &) = delete;
+
+  Core *getCore() {
+    return pCore;
+  }
+
+  void replaceCore(Core *core) {
+    pCore = core;
   }
 };
 

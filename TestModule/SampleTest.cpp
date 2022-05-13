@@ -1,9 +1,10 @@
 #include "CoreFunction.h"
 #include "doctest.cpp"
-//todo arif: fix doctest.cpp as include issue
 #include <stdio.h>
 
-int main(int argc, char **argv) { return doctest::Context(argc, argv).run(); }
+int main(int argc, char **argv) {
+  return doctest::Context(argc, argv).run();
+}
 
 TEST_CASE("Sample Test") {
   Core *mCore = new Core();

@@ -2,6 +2,7 @@
 
 #file globbing
 file(GLOB source "src/*.cpp")
+file(GLOB test_files "test/*")
 
 #include header
 include_directories(inc/)
@@ -11,4 +12,4 @@ include_directories(../TestModule/)
 
 #compile module
 add_library(CoreFunction STATIC ${source})
-add_library(CoreFunctionTest STATIC test/CoreFunctionTest.cpp test/CoreFunctionTest.h)
+add_library(CoreFunctionTest STATIC ${test_files})
