@@ -17,6 +17,5 @@ TEST_CASE("Sample Test") {
   REQUIRE(mCore->sampleFunc() == 0);
 }
 
-TEST_CASE("Prototype Test"){
-
+TEST_CASE("Prototype Test") {
 }

@@ -13,7 +13,7 @@ conf["Entries"] = {
     "max_amount": "100000",
     "min_year_date": "2020",
     "max_year_date": "2030",
-    "values_tags": "salary shopping bill"
+    "values_tags": "salary shopping rent"
 }
 
 # SAVE CONFIG FILE
@@ -23,4 +23,4 @@ with open(r"config.ini", 'w') as config_file:
     config_file.close()
 print("Created config file 'config.ini'")
 
-import tvf_gen
+import entries_gen

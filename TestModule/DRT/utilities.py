@@ -1,5 +1,10 @@
 import random
 import time
+import string
+
+
+def random_str(length):
+    return str.title(''.join(random.choices(string.ascii_lowercase, k=length)))
 
 
 def str_time_prop(start, end, time_format, prop):
