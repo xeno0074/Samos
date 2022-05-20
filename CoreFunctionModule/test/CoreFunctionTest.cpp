@@ -6,9 +6,11 @@
 
 TEST_CASE("CoreFunction.Test") {
   CoreTest &coreTest = CoreTest::getInstance();
-  EntryModel entry[MAX_NUM_ENTRIES];
+  Core *pCore = coreTest.getCore();
 
-    SUBCASE("addEntry.Test") {
-      pCore->addEntry()
-    }
+  EntryModel entries[MAX_NUM_ENTRIES];
+
+  SUBCASE("addEntry.Test") {
+    //    pCore->addEntry();
+  }
 }

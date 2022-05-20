@@ -14,6 +14,6 @@ struct EntryModel {
     int min;
     int sec;
     int msec;
-  } date;
+  } dateTime;
   Uint8 tags[MAX_ENTRY_DATA_BYTES];
 };

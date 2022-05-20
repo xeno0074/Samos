@@ -10,9 +10,13 @@ TEST_CASE("Sample Test") {
   Core *mCore = new Core();
   int coreCreationSuccessful = mCore->sampleFunc();
   if (coreCreationSuccessful) {
-    printf("core not created");
+    printf("core not created\n");
   } else {
-    printf("core created");
+    printf("core created\n");
   }
   REQUIRE(mCore->sampleFunc() == 0);
+}
+
+TEST_CASE("Prototype Test"){
+
 }
