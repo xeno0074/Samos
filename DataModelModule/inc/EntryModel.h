@@ -6,5 +6,14 @@ struct EntryModel {
   Uint8 id;
   Uint32 amount;
   Uint8 txType;
+  struct {
+    int dd;
+    int mm;
+    int yyyy;
+    int hour;
+    int min;
+    int sec;
+    int msec;
+  } date;
   Uint8 tags[MAX_ENTRY_DATA_BYTES];
 };
