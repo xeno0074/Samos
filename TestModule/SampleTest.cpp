@@ -1,4 +1,5 @@
 #include "CoreFunction.h"
+#include "DataReader.h"
 #include "doctest.cpp"
 #include <stdio.h>
 
@@ -18,4 +19,6 @@ TEST_CASE("Sample Test") {
 }
 
 TEST_CASE("Prototype Test") {
+  DataReader dataReader;
+  dataReader.sampleFunc();
 }

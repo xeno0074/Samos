@@ -1,8 +1,7 @@
-#CoreFunctionModule/CmakeLists.txt
+#SupportFunction/DataReaderModule/CmakeLists.txt
 
 #file globbing
 file(GLOB source "src/*.cpp")
-file(GLOB test_files "test/*")
 
 #include header
 include_directories(inc/)
@@ -11,5 +10,4 @@ include_directories(${CMAKE_SOURCE_DIR}/DataModelModule/inc/)
 include_directories(${CMAKE_SOURCE_DIR}/TestModule/)
 
 #compile module
-add_library(CoreFunction STATIC ${source})
-add_library(CoreFunctionTest STATIC ${test_files})
+add_library(DataReader STATIC ${source})
