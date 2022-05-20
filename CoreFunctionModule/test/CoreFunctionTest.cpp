@@ -8,7 +8,7 @@ TEST_CASE("CoreFunction.Test") {
   CoreTest &coreTest = CoreTest::getInstance();
   EntryModel entry[MAX_NUM_ENTRIES];
 
-  //  SUBCASE("addEntry.Test") {
-  //    pCore->addEntry()
-  //  }
+    SUBCASE("addEntry.Test") {
+      pCore->addEntry()
+    }
 }
