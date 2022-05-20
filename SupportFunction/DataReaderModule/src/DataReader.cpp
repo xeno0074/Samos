@@ -7,6 +7,6 @@
 void DataReader::sampleFunc() {
 }
 
-EntryModel DataReader::makeEntry(Uint8 *entryString) {
+EntryModel DataReader::makeEntry(Uint8 entryString[MAX_ENTRY_BYTES]) {
   return EntryModel();
 }

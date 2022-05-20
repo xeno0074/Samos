@@ -18,10 +18,10 @@ max_year_date = int(config['Entries']['max_year_date'])
 values_tags = config['Entries']['values_tags'].split(' ')
 
 ###############################################################################
-#  TVF GENERATION
+#  RANDOM ENTRIES GENERATION
 ###############################################################################
-seed_tvf = 44
-random.seed(seed_tvf)
+seed = 44
+random.seed(seed)
 
 columns = ['data', 'id', 'amount', 'txType', 'dateTime', 'tags']
 
