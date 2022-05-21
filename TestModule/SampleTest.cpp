@@ -8,17 +8,19 @@ int main(int argc, char **argv) {
 }
 
 TEST_CASE("Sample Test") {
+  printf("Running sample test..\n");
   Core *mCore = new Core();
   int coreCreationSuccessful = mCore->sampleFunc();
   if (coreCreationSuccessful) {
-    printf("core not created\n");
+    printf("Core not created..\n");
   } else {
-    printf("core created\n");
+    printf("Core created..\n");
   }
   REQUIRE(mCore->sampleFunc() == 0);
 }
 
 TEST_CASE("Prototype Test") {
+  printf("Running prototype test..\n");
   DataReader dataReader;
   dataReader.sampleFunc();
 }

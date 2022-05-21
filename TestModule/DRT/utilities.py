@@ -7,6 +7,13 @@ def random_str(length):
     return str.title(''.join(random.choices(string.ascii_lowercase, k=length)))
 
 
+def get_txType(values_txType, values_tags, given_tag):
+    for index in range(len(values_tags)):
+        if values_tags[index] is given_tag:
+            map_txType = ['debit', 'credit']
+            return map_txType[int(values_txType[index])]
+
+
 def str_time_prop(start, end, time_format, prop):
     """Get a time at a proportion of a range of two formatted times.
 

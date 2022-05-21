@@ -14,6 +14,10 @@ class DataReader {
   EntryModel makeEntry(Uint8 entryString[MAX_ENTRY_BYTES]);
 
   public:
+  DataReader() = default;
+  DataReader(const Uint8 *filePath) {
+    //    this->filePath = filePath;
+  }
   void sampleFunc();
 };
 
