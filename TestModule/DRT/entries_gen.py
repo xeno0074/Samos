@@ -7,9 +7,10 @@ import utilities
 config = configparser.ConfigParser()
 
 # READ CONFIG FILE
-config.read("config.ini")
+config.read("INPUT_FILES/config.ini")
 print("Read config file 'config.ini'..")
 
+seed = int(config['Settings']['seed'])
 bytes_data = int(config['Entries']['bytes_data'])
 max_id = int(config['Entries']['max_id'])
 max_amount = int(config['Entries']['max_amount'])
@@ -21,11 +22,11 @@ values_tags = config['Entries']['values_tags'].split(' ')
 ###############################################################################
 #  RANDOM ENTRIES GENERATION
 ###############################################################################
-seed = 44
 columns = ['data', 'id', 'amount', 'txType', 'dateTime', 'tags']
 
 random.seed(seed)
-with open("entries.csv", "w", newline='') as csv_file:
+
+with open('INPUT_FILES/entries.csv', "w", newline='') as csv_file:
     writer = csv.writer(csv_file, delimiter=',')
     writer.writerow(columns)
     for entry_id in range(max_id):

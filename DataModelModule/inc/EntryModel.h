@@ -3,7 +3,7 @@
 
 struct EntryModel {
   char data[MAX_ENTRY_DATA_BYTES];
-  Uint8 id;
+  Uint16 id;
   Uint32 amount;
   Uint8 txType;
   char dateStr[MAX_ENTRY_DATE_BYTES];

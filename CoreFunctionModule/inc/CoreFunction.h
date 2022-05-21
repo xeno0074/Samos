@@ -5,12 +5,14 @@
 class Core {
   private:
   EntryModel entriesDB[MAX_NUM_ENTRIES];
-  int numEntries;
+  Uint8 numEntries;
+  Uint32 totalCredit;
+  Uint32 totalDebit;
 
   public:
   Core();
   ~Core() = default;
 
   void addEntry(EntryModel input);
-  EntryModel *findEntry(Uint8 id);
+  EntryModel &findEntry(Uint16 id);
 };
