@@ -11,11 +11,8 @@
 
 class DataReader {
   private:
-  char filePath[MAX_FILENAME_BYTES];
-
-  void prepare(const char filePath[]);
-  void process(Core &core);
   EntryModel makeEntry(const char entryString[MAX_ENTRY_BYTES]);
+  void fillCore(const char filePath[], Core &core);
 
   public:
   DataReader() = delete;

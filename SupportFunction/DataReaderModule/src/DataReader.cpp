@@ -6,11 +6,9 @@
 #include <sstream>
 
 DataReader::DataReader(const char *filePath, Core &core) {
-  prepare(filePath);
-  process(core);
+  fillCore(filePath, core);
+  this->~DataReader();
 }
-
-void DataReader::prepare(const char *filePath) { snprintf(this->filePath, MAX_FILENAME_BYTES, filePath); }
 
 EntryModel DataReader::makeEntry(const char entryString[MAX_ENTRY_BYTES]) {
   std::stringstream entryStream(entryString);
@@ -38,7 +36,7 @@ EntryModel DataReader::makeEntry(const char entryString[MAX_ENTRY_BYTES]) {
   return entry;
 }
 
-void DataReader::process(Core &core) {
+void DataReader::fillCore(const char filePath[], Core &core) {
   std::ifstream file(filePath, std::ios::in | std::ios::beg);
   if (!file.is_open()) {
     // todo arif : add log for unopened file

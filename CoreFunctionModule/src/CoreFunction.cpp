@@ -2,8 +2,6 @@
 
 Core::Core() : numEntries(0) {}
 
-int Core::sampleFunc() { return 0; }
-
 void Core::addEntry(EntryModel input) {
   if (numEntries >= MAX_NUM_ENTRIES) {
     // todo arif : add log for entry overflow

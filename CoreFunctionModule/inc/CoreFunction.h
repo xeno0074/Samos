@@ -11,7 +11,6 @@ class Core {
   Core();
   ~Core() = default;
 
-  int sampleFunc();
   void addEntry(EntryModel input);
   EntryModel *findEntry(Uint8 id);
 };
