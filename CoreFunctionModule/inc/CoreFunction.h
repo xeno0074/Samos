@@ -8,7 +8,7 @@ class Core {
   int numEntries;
 
   public:
-  Core() = default;
+  Core();
   ~Core() = default;
 
   int sampleFunc();

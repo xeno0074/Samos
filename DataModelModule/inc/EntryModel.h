@@ -2,10 +2,11 @@
 #include "SystemDefines.h"
 
 struct EntryModel {
-  Uint8 data[MAX_ENTRY_DATA_BYTES];
+  char data[MAX_ENTRY_DATA_BYTES];
   Uint8 id;
   Uint32 amount;
   Uint8 txType;
+  char dateStr[MAX_ENTRY_DATE_BYTES];
   struct {
     int dd;
     int mm;
@@ -15,5 +16,5 @@ struct EntryModel {
     int sec;
     int msec;
   } dateTime;
-  Uint8 tags[MAX_ENTRY_DATA_BYTES];
+  char tag[MAX_ENTRY_TAG_BYTES];
 };

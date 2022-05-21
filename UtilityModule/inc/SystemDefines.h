@@ -17,9 +17,12 @@ static constexpr int WORD_SZ = 2 * BYTE_SZ;
 
 //  MAX DEFINES
 static constexpr int MAX_BUFFER_BYTES = 64;
-static constexpr int MAX_ENTRY_BYTES = 400;
-static constexpr int MAX_ENTRY_DATA_BYTES = 200;
+static constexpr int MAX_ENTRY_BYTES = 600;
+static constexpr int MAX_ENTRY_DATA_BYTES = 150;
+static constexpr int MAX_ENTRY_DATE_BYTES = 30;
+static constexpr int MAX_ENTRY_TAG_BYTES = 100;
 static constexpr int MAX_NUM_ENTRIES = 2000;
 static constexpr int MAX_FILENAME_BYTES = 100;
+static constexpr int MAX_COLUMNS = 6;
 
 #endif// VLADIS_SYSTEMDEFINES_H
