@@ -27,11 +27,8 @@ EntryModel DataReader::makeEntry(const char entryString[MAX_ENTRY_BYTES]) {
   } else {
     entry.txType = 0;
   }
-  snprintf(entry.dateStr, MAX_ENTRY_DATA_BYTES, elements[4]);
-  //  todo arif : convert dateStr to dateTime
+  entry.dateTime.setDate(elements[4]);
   snprintf(entry.tag, MAX_ENTRY_DATA_BYTES, elements[5]);
-
-  //  printf("%s, %d, %d, %d, %s, %s\n", entry.data, entry.id, entry.amount, entry.txType, entry.dateStr, entry.tag);
 
   return entry;
 }
