@@ -32,5 +32,5 @@ def str_time_prop(start, end, time_format, prop):
 
 
 def random_date(start, end):
-    return str_time_prop("1/1/{} 12:00 AM".format(start), "1/1/{} 12:00 AM".format(end), '%d/%m/%Y %I:%M %p',
+    return str_time_prop(start, end, '%d %m %Y %I %M %p',
                          random.random())

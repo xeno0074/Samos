@@ -1,13 +1,15 @@
 #include "CoreFunction.h"
+#include <string>
 
-Core::Core() : numEntries(0), totalCredit(0), totalDebit(0) {}
+Core::Core() : numEntries(0), totalCredit(0), totalDebit(0) { memset(idList, 0, MAX_NUM_ENTRIES); }
 
 void Core::addEntry(EntryModel input) {
   if (input.id >= MAX_NUM_ENTRIES) {
     // todo arif : add log for entry overflow
     return;
   }
-  entriesDB[input.id] = input;
+  entriesDB[numEntries] = input;
+  idList[numEntries] = input.id;
 
   //  update member parameters
   numEntries++;
@@ -15,9 +17,32 @@ void Core::addEntry(EntryModel input) {
   totalDebit += Uint8(!input.txType) * input.amount;
 }
 
-EntryModel &Core::findEntry(Uint16 id) {
-  //  for (int entryIndex = 0; entryIndex < numEntries; entryIndex++) {
-  //    if (entriesDB[entryIndex].id == id) { return &entriesDB[entryIndex]; }
-  //  }
-  return entriesDB[id];
+void Core::addEntrySort(EntryModel input) {
+  if (input.id >= MAX_NUM_ENTRIES) {
+    // todo arif : add log for entry overflow
+    return;
+  }
+  entriesDB[numEntries] = input;
+
+
+  //  update member parameters
+  numEntries++;
+  totalCredit += Uint8(input.txType) * input.amount;
+  totalDebit += Uint8(!input.txType) * input.amount;
+
+  // todo arif : complete this function
 }
+
+EntryModel *Core::getEntry(Uint16 id) {
+  for (int entryIndex = 0; entryIndex < numEntries; entryIndex++) {
+    if (idList[entryIndex] == id) {
+      //  return the pointer to the entry
+      return &entriesDB[entryIndex];
+    }
+  }
+
+  //  entry doesn't exist
+  return nullptr;
+}
+
+void Core::generateReport() {}

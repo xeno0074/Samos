@@ -25,5 +25,7 @@ static constexpr int MAX_ENTRY_TAG_BYTES = 100;
 static constexpr int MAX_NUM_ENTRIES = 2000;
 static constexpr int MAX_FILENAME_BYTES = 100;
 static constexpr int MAX_COLUMNS = 6;
+static constexpr int MAX_NUM_ELEMENTS = 6;
+static constexpr int MAX_DATE_DATA_SIZE = 10;
 
 #endif// VLADIS_SYSTEMDEFINES_H

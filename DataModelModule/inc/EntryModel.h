@@ -1,4 +1,5 @@
 #pragma once
+#include "DateModel.h"
 #include "SystemDefines.h"
 
 struct EntryModel {
@@ -7,14 +8,6 @@ struct EntryModel {
   Uint32 amount;
   Uint8 txType;
   char dateStr[MAX_ENTRY_DATE_BYTES];
-  struct {
-    int dd;
-    int mm;
-    int yyyy;
-    int hour;
-    int min;
-    int sec;
-    int msec;
-  } dateTime;
+  DateModel dateTime;
   char tag[MAX_ENTRY_TAG_BYTES];
 };

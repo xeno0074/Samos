@@ -13,11 +13,11 @@ DataReader::DataReader(const char *filePath, Core &core) {
 EntryModel DataReader::makeEntry(const char entryString[MAX_ENTRY_BYTES]) {
   std::stringstream entryStream(entryString);
   char elements[MAX_COLUMNS][MAX_ENTRY_DATA_BYTES];
-  char tmp[MAX_ENTRY_DATA_BYTES];
+  char word[MAX_ENTRY_DATA_BYTES];
   EntryModel entry;
 
-  for (Uint8 columnIndex = 0; entryStream.getline(tmp, MAX_ENTRY_DATA_BYTES, ','); columnIndex++) {
-    snprintf(elements[columnIndex], MAX_ENTRY_DATA_BYTES, tmp);
+  for (Uint8 columnIndex = 0; entryStream.getline(word, MAX_ENTRY_DATA_BYTES, ','); columnIndex++) {
+    snprintf(elements[columnIndex], MAX_ENTRY_DATA_BYTES, word);
   }
   snprintf(entry.data, MAX_ENTRY_DATA_BYTES, elements[0]);
   entry.id = std::stoi(elements[1]);

@@ -75,4 +75,4 @@ with open(r"INPUT_FILES/config.ini", 'w') as config_file:
     config_file.flush()
     config_file.close()
 
-print("Created config file 'config.ini'..")
+print("Created config file 'INPUT_FILES/config.ini'..")
