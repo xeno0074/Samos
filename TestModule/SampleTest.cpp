@@ -2,12 +2,14 @@
 #include "DataReader.h"
 #include "doctest.cpp"
 
-int main(int argc, char **argv) { return doctest::Context(argc, argv).run(); }
+int main(int argc, char **argv) {
+  return doctest::Context(argc, argv).run();
+}
 
 TEST_CASE("Prototype Test") {
   printf("\nRunning prototype test..\n");
 
-  system("python3 conf_gen.py \
+  system("py conf_gen.py \
                   --seed 547 \
                   --bytes_data 50 \
                   --max_id 10 \
@@ -17,7 +19,7 @@ TEST_CASE("Prototype Test") {
                   --max_year_date \"1 2 2020 12 00 AM\" \
                   --values_tags \"salary shopping rent\"");
 
-  system("python3 entries_gen.py");
+  system("py entries_gen.py");
 
   Core core;
   DataReader dataReader("INPUT_FILES/entries.csv", core);

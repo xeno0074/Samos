@@ -34,7 +34,7 @@ EntryModel DataReader::makeEntry(const char entryString[MAX_ENTRY_BYTES]) {
 }
 
 void DataReader::fillCore(const char filePath[], Core &core) {
-  std::ifstream file(filePath, std::ios::in | std::ios::beg);
+  std::fstream file(filePath);
   if (!file.is_open()) {
     // todo arif : add log for unopened file
     return;

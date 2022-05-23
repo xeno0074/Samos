@@ -21,7 +21,16 @@ void DateModel::setDate(const char *dateStr) {//  dateStr format : '%d %m %Y %I 
   hour = std::stoi(elements[3]);
   minutes = std::stoi(elements[4]);
 
+  // check if input is 24 hour format
+  if (!strcmp(elements[5], "..")) {
+    return;
+  }
+
   // convert 12 hour format to 24 hour format
-  if (!strcmp(elements[5], "PM") && hour < 12) { hour += 12; }
-  if (!strcmp(elements[5], "AM") && hour == 12) { hour = 0; }
+  if (!strcmp(elements[5], "PM") && hour < 12) {
+    hour += 12;
+  }
+  if (!strcmp(elements[5], "AM") && hour == 12) {
+    hour = 0;
+  }
 }

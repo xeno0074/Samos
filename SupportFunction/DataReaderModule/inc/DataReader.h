@@ -4,7 +4,6 @@
 #include "CoreFunction.h"
 #include "EntryModel.h"
 #include "SystemDefines.h"
-#include <string>
 
 #ifndef SAMOSC_DATAREADER_H
 #define SAMOSC_DATAREADER_H
