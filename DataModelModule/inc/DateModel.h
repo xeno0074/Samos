@@ -18,6 +18,8 @@ class DateModel {
   public:
   DateModel();
   void setDate(const char *dateStr);
+  bool operator<(const DateModel &date);
+  bool operator>(const DateModel &date);
 };
 
 #endif//SAMOSC_DATEMODEL_H
