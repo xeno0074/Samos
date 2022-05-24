@@ -39,5 +39,8 @@ TEST_CASE("Date Model Test") {
   d5.setDate("1 5 2022 10 30 PM");
   d6.setDate("1 5 2022 9 30 AM");
 
+  printf("%d, %d, %d, %d, %d\n", d1 < d2, d2 < d3, d3 < d4, d4 < d5, d5 < d6);
+  printf("%d, %d, %d, %d, %d\n", d1 > d2, d2 > d3, d3 > d4, d4 > d5, d5 > d6);
+
   printf("Date model test complete..\n");
 }

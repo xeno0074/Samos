@@ -11,8 +11,9 @@ void DateModel::setDate(const char *dateStr) {//  dateStr format : '%d %m %Y %I 
   char word[MAX_DATE_DATA_SIZE];
   char elements[MAX_NUM_ELEMENTS][MAX_DATE_DATA_SIZE];
   std::stringstream dateStrStream(dateStr);
+  Uint8 elementIndex;
 
-  for (Uint8 elementIndex = 0; dateStrStream.getline(word, MAX_DATE_DATA_SIZE, ' '); elementIndex++) {
+  for (elementIndex = 0; dateStrStream.getline(word, MAX_DATE_DATA_SIZE, ' '); elementIndex++) {
     snprintf(elements[elementIndex], MAX_DATE_DATA_SIZE, word);
   }
   dd = std::stoi(elements[0]);
@@ -22,7 +23,7 @@ void DateModel::setDate(const char *dateStr) {//  dateStr format : '%d %m %Y %I 
   minutes = std::stoi(elements[4]);
 
   // check if input is 24 hour format
-  if (!strcmp(elements[5], "..")) {
+  if (elementIndex == 5) {
     return;
   }
 
@@ -33,4 +34,42 @@ void DateModel::setDate(const char *dateStr) {//  dateStr format : '%d %m %Y %I 
   if (!strcmp(elements[5], "AM") && hour == 12) {
     hour = 0;
   }
+}
+
+bool DateModel::operator<(const DateModel &date) {
+  if (yyyy < date.yyyy) {
+    return true;
+  }
+  if (mm < date.mm) {
+    return true;
+  }
+  if (dd < date.dd) {
+    return true;
+  }
+  if (hour < date.hour) {
+    return true;
+  }
+  if (minutes < date.minutes) {
+    return true;
+  }
+  return false;
+}
+
+bool DateModel::operator>(const DateModel &date) {
+  if (yyyy > date.yyyy) {
+    return true;
+  }
+  if (mm > date.mm) {
+    return true;
+  }
+  if (dd > date.dd) {
+    return true;
+  }
+  if (hour > date.hour) {
+    return true;
+  }
+  if (minutes > date.minutes) {
+    return true;
+  }
+  return false;
 }
