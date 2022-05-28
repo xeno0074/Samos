@@ -24,7 +24,7 @@ TEST_CASE("Prototype Test") {
   RUN_PY("conf_gen.py \
                   --seed 547 \
                   --bytes_data 50 \
-                  --max_id 2000 \
+                  --max_id 2001 \
                   --max_amount 100 \
                   --values_txType \"1 0 0\" \
                   --min_year_date \"1 1 2020 12 00 AM\" \
@@ -37,6 +37,7 @@ TEST_CASE("Prototype Test") {
   DataReader dataReader("INPUT_FILES/entries.csv", core);
 
 
+  printf("Logs are stored in LOGS/logs.csv..\n");
   printf("Prototype test complete..\n");
 }
 
