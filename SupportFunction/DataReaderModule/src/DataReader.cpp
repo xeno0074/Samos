@@ -2,6 +2,7 @@
 // Created by iamar on 5/21/2022.
 //
 #include "DataReader.h"
+#include "Log.h"
 #include <fstream>
 #include <sstream>
 
@@ -36,7 +37,7 @@ EntryModel DataReader::makeEntry(const char entryString[MAX_ENTRY_BYTES]) {
 void DataReader::fillCore(const char filePath[], Core &core) {
   std::fstream file(filePath);
   if (!file.is_open()) {
-    // todo arif : add log for unopened file
+    LOG(plog::debug) << "Couldn't open file" << std::string(filePath);
     return;
   }
 
@@ -45,6 +46,8 @@ void DataReader::fillCore(const char filePath[], Core &core) {
   file.getline(entryString, MAX_ENTRY_BYTES);
   while (!file.eof()) {
     file.getline(entryString, MAX_ENTRY_BYTES);
-    if (strcmp(entryString, "")) { core.addEntry(makeEntry(entryString)); }
+    if (strcmp(entryString, "")) {
+      core.addEntry(makeEntry(entryString));
+    }
   }
 }

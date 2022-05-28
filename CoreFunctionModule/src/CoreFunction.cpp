@@ -1,11 +1,14 @@
 #include "CoreFunction.h"
+#include "Log.h"
 #include <string>
 
-Core::Core() : numEntries(0), totalCredit(0), totalDebit(0) { memset(idList, 0, MAX_NUM_ENTRIES); }
+Core::Core() : numEntries(0), totalCredit(0), totalDebit(0) {
+  memset(idList, 0, MAX_NUM_ENTRIES);
+}
 
 void Core::addEntry(EntryModel input) {
   if (input.id >= MAX_NUM_ENTRIES) {
-    // todo arif : add log for entry overflow
+    LOG(plog::debug) << "Overflow in entryDB";
     return;
   }
   entriesDB[numEntries] = input;
@@ -19,7 +22,7 @@ void Core::addEntry(EntryModel input) {
 
 void Core::addEntrySort(EntryModel input) {
   if (input.id >= MAX_NUM_ENTRIES) {
-    // todo arif : add log for entry overflow
+    LOG(plog::debug) << "Overflow in entryDB";
     return;
   }
   entriesDB[numEntries] = input;

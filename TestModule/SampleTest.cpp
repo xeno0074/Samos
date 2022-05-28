@@ -1,8 +1,12 @@
 #include "CoreFunction.h"
 #include "DataReader.h"
+#include "Initializers/RollingFileInitializer.h"
+#include "Log.h"
 #include "doctest.cpp"
 
 int main(int argc, char **argv) {
+  plog::init(plog::debug, "logs.csv");
+
   return doctest::Context(argc, argv).run();
 }
 
@@ -12,7 +16,7 @@ TEST_CASE("Prototype Test") {
   system("py conf_gen.py \
                   --seed 547 \
                   --bytes_data 50 \
-                  --max_id 10 \
+                  --max_id 2000 \
                   --max_amount 100 \
                   --values_txType \"1 0 0\" \
                   --min_year_date \"1 1 2020 12 00 AM\" \

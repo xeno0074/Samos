@@ -9,7 +9,3 @@
  add_subdirectory(SupportFunction/DataReaderModule)
  add_subdirectory(DataModelModule)
  add_subdirectory(UtilityModule)
-
- configure_file(${CMAKE_SOURCE_DIR}/TestModule/DRT/conf_gen.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
- configure_file(${CMAKE_SOURCE_DIR}/TestModule/DRT/entries_gen.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
- configure_file(${CMAKE_SOURCE_DIR}/TestModule/DRT/utilities.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)

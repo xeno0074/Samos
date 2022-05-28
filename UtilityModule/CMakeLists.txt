@@ -8,3 +8,10 @@ include_directories(inc/)
 
 #compile module
 add_library(Utility STATIC ${source})
+
+# ADD COMPILE TIME DEFINITIONS -----------------------------------------------------------------------------------------
+if (disableLogs)
+    list(APPEND compile_definitions PLOG_DISABLE_LOGGING)
+endif ()
+
+add_compile_definitions(${compile_definitions})

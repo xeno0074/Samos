@@ -13,4 +13,6 @@ TEST_CASE("CoreFunction.Test") {
   SUBCASE("addEntry.Test") {
     //    pCore->addEntry();
   }
+
+  //  REQUIRE(1 == 0);
 }

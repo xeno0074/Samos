@@ -19,7 +19,7 @@ min_year_date = '2020'
 max_year_date = '2030'
 values_tags = 'salary shopping rent'
 
-# READ SEED FROM ARGUMENTS
+# READ VALUES FROM ARGUMENTS
 parser = argparse.ArgumentParser()
 parser.add_argument('--seed')
 parser.add_argument('--bytes_data')
