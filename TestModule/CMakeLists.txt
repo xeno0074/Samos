@@ -40,6 +40,7 @@ endif ()
 add_compile_definitions(${compile_definitions})
 
 # COPY TEST FILES GENERATOR SCRIPTS ------------------------------------------------------------------------------------
-configure_file(${CMAKE_SOURCE_DIR}/TestModule/DRT/conf_gen.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/TestModule/DRT/entries_gen.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/TestModule/DRT/utilities.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/conf_gen.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/entries_gen.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/utilities.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/prepare_test.py ${CMAKE_SOURCE_DIR}/cmake-build-debug/TestModule/ COPYONLY)

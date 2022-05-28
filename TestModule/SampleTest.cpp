@@ -5,19 +5,21 @@
 #include "doctest.cpp"
 
 #ifdef _WIN32
-#define RUN_PY(args) system("py " args);
+#define RUN_PY(args) system("py " args)
 #else
 #define RUN_PY(args) system("python3 " args);
 #endif
 
 int main(int argc, char **argv) {
-  plog::init(plog::debug, "logs.csv");
+  plog::init(plog::debug, "LOGS/logs.csv");
 
   return doctest::Context(argc, argv).run();
 }
 
 TEST_CASE("Prototype Test") {
   printf("\nRunning prototype test..\n");
+
+  RUN_PY("prepare_test.py");
 
   RUN_PY("conf_gen.py \
                   --seed 547 \

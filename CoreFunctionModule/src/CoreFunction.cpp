@@ -8,7 +8,7 @@ Core::Core() : numEntries(0), totalCredit(0), totalDebit(0) {
 
 void Core::addEntry(EntryModel input) {
   if (input.id >= MAX_NUM_ENTRIES) {
-    LOG(plog::debug) << "Overflow in entryDB";
+    LOG(plog::error) << "Overflow in entryDB";
     return;
   }
   entriesDB[numEntries] = input;
@@ -22,7 +22,7 @@ void Core::addEntry(EntryModel input) {
 
 void Core::addEntrySort(EntryModel input) {
   if (input.id >= MAX_NUM_ENTRIES) {
-    LOG(plog::debug) << "Overflow in entryDB";
+    LOG(plog::error) << "Overflow in entryDB";
     return;
   }
   entriesDB[numEntries] = input;
