@@ -2,7 +2,7 @@
 
 #file globbing
 file(GLOB source "src/*.cpp")
-file(GLOB test_files "test/*")
+#file(GLOB test_files "test/*")
 
 #include header
 include_directories(inc/)
@@ -13,7 +13,7 @@ include_directories(${CMAKE_SOURCE_DIR}/TestModule/Tools/plog/)
 
 #compile module
 add_library(CoreFunction STATIC ${source})
-add_library(CoreFunctionTest STATIC ${test_files})
+#add_library(CoreFunctionTest STATIC ${test_files})
 
 # ADD COMPILE TIME DEFINITIONS -----------------------------------------------------------------------------------------
 if (disableLogs)

@@ -3,7 +3,7 @@
 #include "Initializers/RollingFileInitializer.h"
 #include "Log.h"
 #include "Utilities.h"
-#include "doctest.cpp"
+#include "doctest_fwd.h"
 
 int main(int argc, char **argv) {
   plog::init(plog::debug, "LOGS/logs.csv");

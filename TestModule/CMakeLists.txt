@@ -7,12 +7,13 @@ list(APPEND modules Utility)
 #list(APPEND modules Clock)
 list(APPEND modules DataReader)
 
-set(test_libs CoreFunctionTest)
+#set(test_libs CoreFunctionTest)
 #list(APPEND test_lib DataModelTest)
 #list(APPEND test_lib UtilityTest)
 
 set(header_paths ${CMAKE_SOURCE_DIR}/CoreFunctionModule/inc/)
 list(APPEND header_paths ${CMAKE_SOURCE_DIR}/DataModelModule/inc/)
+list(APPEND header_paths ${CMAKE_SOURCE_DIR}/CoreFunctionModule/test/)
 list(APPEND header_paths ${CMAKE_SOURCE_DIR}/UtilityModule/inc/)
 #list(APPEND header_paths ${CMAKE_SOURCE_DIR}/SupportFunction/ClockModule/inc/)
 list(APPEND header_paths ${CMAKE_SOURCE_DIR}/SupportFunction/DataReaderModule/inc/)
@@ -25,12 +26,12 @@ include_directories(${header_paths})
 include_directories(${tools_paths})
 
 #compile target
-add_executable(SampleTest SampleTest.cpp)
-add_executable(FunctionTest FunctionTest.cpp)
+add_executable(SampleTest SampleTest.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Tools/doctest/doctest.cpp)
+add_executable(FunctionTest FunctionTest.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Tools/doctest/doctest.cpp)
 
 #link libraries
 target_link_libraries(SampleTest ${modules})
-target_link_libraries(FunctionTest ${modules} ${test_libs})
+target_link_libraries(FunctionTest ${modules})
 
 # ADD COMPILE TIME DEFINITIONS -----------------------------------------------------------------------------------------
 if (disableLogs)

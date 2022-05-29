@@ -1,6 +1,7 @@
 //
 // Created by Arif Ahmed on 11/05/22.
 //
+#include "CoreFunctionTest.cpp"
 #include "doctest_fwd.h"
 
 int main(int argc, char **argv) {
