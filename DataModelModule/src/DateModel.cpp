@@ -3,6 +3,7 @@
 //
 #include "DateModel.h"
 #include "SystemDefines.h"
+#include <cstring>
 #include <sstream>
 
 DateModel::DateModel() : dd(0), mm(0), yyyy(0), hour(0), minutes(0), sec(0), msec(0) {}
