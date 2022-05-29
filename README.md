@@ -7,4 +7,4 @@
 
 ### Dependency Diagram of Modules
 
-![Alt](images/dependency_diagram.drawio.png)
+![Alt](images/dependency_diagram.png)
