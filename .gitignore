@@ -137,3 +137,6 @@ TestModule/UtilityModule/CMakeFiles/*
 /.idea/Samosc.iml
 /.vscode/tasks.json
 /.idea/vcs.xml
+
+# draw.io files
+*.drawio.png
