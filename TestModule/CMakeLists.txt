@@ -40,7 +40,13 @@ endif ()
 add_compile_definitions(${compile_definitions})
 
 # COPY TEST FILES GENERATOR SCRIPTS ------------------------------------------------------------------------------------
-configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/conf_gen.py ${CMAKE_BINARY_DIR}/TestModule/ COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/entries_gen.py ${CMAKE_BINARY_DIR}/TestModule/ COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/utilities.py ${CMAKE_BINARY_DIR}/TestModule/ COPYONLY)
-configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/prepare_test.py ${CMAKE_BINARY_DIR}/TestModule/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/conf_gen.py ${CMAKE_CURRENT_BINARY_DIR}/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/entries_gen.py ${CMAKE_CURRENT_BINARY_DIR}/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/utilities.py ${CMAKE_CURRENT_BINARY_DIR}/ COPYONLY)
+configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/prepare_test.py ${CMAKE_CURRENT_BINARY_DIR}/ COPYONLY)
+
+# EXECUTE SCRIPTS
+#execute_process(
+#        COMMAND python3 "${CMAKE_CURRENT_BINARY_DIR}/entries_gen.py"
+#        ECHO_OUTPUT_VARIABLE
+#)
