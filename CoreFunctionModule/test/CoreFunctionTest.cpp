@@ -5,14 +5,14 @@
 #include "doctest.cpp"
 
 TEST_CASE("CoreFunction.Test") {
-  CoreTest &coreTest = CoreTest::getInstance();
-  Core *pCore = coreTest.getCore();
+  //  CoreTest &coreTest = CoreTest::getInstance();
+  //  Core *pCore = coreTest.getCore();
 
-  EntryModel entries[MAX_NUM_ENTRIES];
+  //  EntryModel entries[MAX_NUM_ENTRIES];
 
-  SUBCASE("addEntry.Test") {
-    //    pCore->addEntry();
-  }
+  //  SUBCASE("addEntry.Test") {
+  //    pCore->addEntry();
+  //  }
 
   //  REQUIRE(1 == 0);
 }
