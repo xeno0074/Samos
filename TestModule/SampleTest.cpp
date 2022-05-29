@@ -2,13 +2,8 @@
 #include "DataReader.h"
 #include "Initializers/RollingFileInitializer.h"
 #include "Log.h"
+#include "Utilities.h"
 #include "doctest.cpp"
-
-#ifdef _WIN32
-#define RUN_PY(args) system("py " args)
-#else
-#define RUN_PY(args) system("python3 " args);
-#endif
 
 int main(int argc, char **argv) {
   plog::init(plog::debug, "LOGS/logs.csv");
