@@ -3,6 +3,7 @@
 //
 #include "DataReader.h"
 #include "Log.h"
+#include <cstring>
 #include <fstream>
 #include <sstream>
 
