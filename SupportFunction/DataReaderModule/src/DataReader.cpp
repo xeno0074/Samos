@@ -38,7 +38,7 @@ EntryModel DataReader::makeEntry(const char entryString[MAX_ENTRY_BYTES]) {
 void DataReader::fillCore(const char filePath[], Core &core) {
   std::fstream file(filePath);
   if (!file.is_open()) {
-    LOG(plog::fatal) << "Couldn't open file" << std::string(filePath);
+    LOG(plog::fatal) << "Couldn't open file " << std::string(filePath);
     return;
   }
 

@@ -25,7 +25,7 @@ values_tags = config['Entries']['values_tags'].split(' ')
 random.seed(seed)
 
 with open('TEST_FILES/entries.csv', "w", newline='') as entry_file, open('TEST_FILES/tc01.csv', "w",
-                                                                          newline='') as tc01_file:
+                                                                         newline='') as tc01_file:
     entry_writer = csv.writer(entry_file, delimiter=',')
     entry_writer.writerow(['data', 'id', 'amount', 'txType', 'dateTime', 'tags'])
 
@@ -43,9 +43,8 @@ with open('TEST_FILES/entries.csv', "w", newline='') as entry_file, open('TEST_F
         entry_writer.writerow(entry)
 
         #   GENERATE TC_01 - total credit and total debit with each entry
-        print(type(entry[3]))
-        total_credit += (entry[3] is 'credit') * entry[2]
-        total_debit += (entry[3] is 'debit') * entry[2]
+        total_credit += (entry[3] == 'credit') * entry[2]
+        total_debit += (entry[3] == 'debit') * entry[2]
         tc01_writer.writerow([total_credit, total_debit])
 
 print('Generated entries in \'TEST_FILES/entries.csv\'..')
