@@ -7,7 +7,7 @@ import utilities
 config = configparser.ConfigParser()
 
 # READ CONFIG FILE
-config.read("INPUT_FILES/config.ini")
+config.read("TEST_FILES/config.ini")
 
 seed = int(config['Settings']['seed'])
 bytes_data = int(config['Entries']['bytes_data'])
@@ -24,7 +24,7 @@ values_tags = config['Entries']['values_tags'].split(' ')
 
 random.seed(seed)
 
-with open('INPUT_FILES/entries.csv', "w", newline='') as entry_file, open('INPUT_FILES/tc01.csv', "w",
+with open('TEST_FILES/entries.csv', "w", newline='') as entry_file, open('TEST_FILES/tc01.csv', "w",
                                                                           newline='') as tc01_file:
     entry_writer = csv.writer(entry_file, delimiter=',')
     entry_writer.writerow(['data', 'id', 'amount', 'txType', 'dateTime', 'tags'])
@@ -48,4 +48,4 @@ with open('INPUT_FILES/entries.csv', "w", newline='') as entry_file, open('INPUT
         total_debit += (entry[3] is 'debit') * entry[2]
         tc01_writer.writerow([total_credit, total_debit])
 
-print('Generated entries in \'INPUT_FILES/entries.csv\'..')
+print('Generated entries in \'TEST_FILES/entries.csv\'..')

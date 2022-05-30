@@ -47,7 +47,15 @@ configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/utilities.py ${CMAKE_CURRE
 configure_file(${CMAKE_SOURCE_DIR}/TestModule/Scripts/prepare_test.py ${CMAKE_CURRENT_BINARY_DIR}/ COPYONLY)
 
 # EXECUTE SCRIPTS
-#execute_process(
-#        COMMAND python3 "${CMAKE_CURRENT_BINARY_DIR}/entries_gen.py"
-#        ECHO_OUTPUT_VARIABLE
-#)
+#if (UNIX)
+#    execute_process(
+#            COMMAND python3 "${CMAKE_CURRENT_BINARY_DIR}/entries_gen.py"
+#            ECHO_OUTPUT_VARIABLE
+#    )
+#endif ()
+#
+#if (WIN32)
+#    execute_process(
+#            COMMAND py "${CMAKE_CURRENT_BINARY_DIR}/entries_gen.py"
+#            ECHO_OUTPUT_VARIABLE
+#endif ()

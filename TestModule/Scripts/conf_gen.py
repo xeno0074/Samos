@@ -4,7 +4,7 @@ import argparse
 
 # CREATE INPUT DIRECTORY
 try:
-    os.makedirs("INPUT_FILES")
+    os.makedirs("TEST_FILES")
 except FileExistsError:
     # directory already exists
     pass
@@ -70,9 +70,9 @@ conf["Entries"] = {
 }
 
 # SAVE CONFIG FILE
-with open(r"INPUT_FILES/config.ini", 'w') as config_file:
+with open(r"TEST_FILES/config.ini", 'w') as config_file:
     conf.write(config_file)
     config_file.flush()
     config_file.close()
 
-print("Created config file 'INPUT_FILES/config.ini'..")
+print("Created config file 'TEST_FILES/config.ini'..")

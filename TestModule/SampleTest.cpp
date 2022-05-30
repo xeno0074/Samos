@@ -25,7 +25,7 @@ TEST_CASE("Prototype Test") {
                   --values_tags \"salary shopping rent\"");
 
   Core core;
-  DataReader dataReader("INPUT_FILES/entries.csv", core);
+  DataReader dataReader("TEST_FILES/entries.csv", core);
 
 
   printf("Logs are stored in LOGS/logs.csv..\n");
