@@ -116,3 +116,6 @@ dist
 
 # draw.io files
 *.drawio.png
+/.idea/.name
+/.idea/deployment.xml
+/.idea/Samos.iml
