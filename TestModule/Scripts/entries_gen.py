@@ -21,19 +21,31 @@ values_tags = config['Entries']['values_tags'].split(' ')
 ########################################################################################################################
 #  RANDOM ENTRIES GENERATION
 ########################################################################################################################
-columns = ['data', 'id', 'amount', 'txType', 'dateTime', 'tags']
 
 random.seed(seed)
 
-with open('INPUT_FILES/entries.csv', "w", newline='') as csv_file:
-    writer = csv.writer(csv_file, delimiter=',')
-    writer.writerow(columns)
+with open('INPUT_FILES/entries.csv', "w", newline='') as entry_file, open('INPUT_FILES/tc01.csv', "w",
+                                                                          newline='') as tc01_file:
+    entry_writer = csv.writer(entry_file, delimiter=',')
+    entry_writer.writerow(['data', 'id', 'amount', 'txType', 'dateTime', 'tags'])
+
+    tc01_writer = csv.writer(tc01_file, delimiter=',')
+    tc01_writer.writerow(['total credit', 'total debit'])
+    total_credit = 0
+    total_debit = 0
+
     for entry_id in range(max_id):
         tag = random.choice(values_tags)
         entry = [utilities.random_str(random.randint(bytes_data // 4, bytes_data)), (max_id - entry_id - 1),
                  random.randint(1, max_amount),
                  utilities.get_txType(values_txType, values_tags, tag),
                  utilities.random_date(min_year_date, max_year_date), tag]
-        writer.writerow(entry)
+        entry_writer.writerow(entry)
+
+        #   GENERATE TC_01 - total credit and total debit with each entry
+        print(type(entry[3]))
+        total_credit += (entry[3] is 'credit') * entry[2]
+        total_debit += (entry[3] is 'debit') * entry[2]
+        tc01_writer.writerow([total_credit, total_debit])
 
 print('Generated entries in \'INPUT_FILES/entries.csv\'..')
