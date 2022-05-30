@@ -14,9 +14,7 @@ int main(int argc, char **argv) {
 TEST_CASE("Prototype Test") {
   printf("\nRunning prototype test..\n");
 
-  RUN_PY("prepare_test.py");
-
-  RUN_PY("conf_gen.py \
+  PREPARE_TEST("\
                   --seed 547 \
                   --bytes_data 50 \
                   --max_id 2001 \
@@ -25,8 +23,6 @@ TEST_CASE("Prototype Test") {
                   --min_year_date \"1 1 2020 12 00 AM\" \
                   --max_year_date \"1 2 2020 12 00 AM\" \
                   --values_tags \"salary shopping rent\"");
-
-  RUN_PY("entries_gen.py");
 
   Core core;
   DataReader dataReader("INPUT_FILES/entries.csv", core);

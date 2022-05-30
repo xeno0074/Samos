@@ -12,4 +12,9 @@
 #define RUN_PY(args) system("python3 " args);
 #endif
 
+#define PREPARE_TEST(args)                                                                                             \
+  RUN_PY("prepare_test.py");                                                                                           \
+  RUN_PY("conf_gen.py " args);                                                                                         \
+  RUN_PY("entries_gen.py");
+
 #endif//SAMOSC_UTILITIES_H
