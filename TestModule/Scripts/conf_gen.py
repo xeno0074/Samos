@@ -10,13 +10,13 @@ except FileExistsError:
     pass
 
 # DEFAULT VALUES FOR PARAMETERS
-seed = 0
+seed = 547
 bytes_data = '30'
 max_id = '3'
 max_amount = '10'
 values_txType = '1 0 0'  # 1 == credit, 0 == debit
-min_year_date = '2020'
-max_year_date = '2030'
+min_year_date = '1 1 2020 12 00 AM'
+max_year_date = '1 2 2020 12 00 AM'
 values_tags = 'salary shopping rent'
 
 # READ VALUES FROM ARGUMENTS

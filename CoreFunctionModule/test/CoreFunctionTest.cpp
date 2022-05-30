@@ -2,6 +2,7 @@
 // Created by Arif Ahmed on 11/05/22.
 //
 #include "CoreFunctionTest.h"
+#include "Utilities.h"
 #include "doctest_fwd.h"
 
 TEST_CASE("CoreFunctionTest") {
@@ -9,6 +10,8 @@ TEST_CASE("CoreFunctionTest") {
   Core *pCore = coreTest.getCore();
 
   EntryModel entries[MAX_NUM_ENTRIES];
+
+  PREPARE_TEST("--max_id 20");
 
   SUBCASE("addEntry.Test") {
     //      pCore->addEntry();

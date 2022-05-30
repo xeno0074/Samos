@@ -2,17 +2,14 @@
 #include "Log.h"
 #include <string>
 
-Core::Core() : numEntries(0), totalCredit(0), totalDebit(0) {
-  memset(idList, 0, MAX_NUM_ENTRIES);
-}
+Core::Core() : numEntries(0), totalCredit(0), totalDebit(0) {}
 
 void Core::addEntry(EntryModel input) {
-  if (input.id >= MAX_NUM_ENTRIES) {
+  if (numEntries >= MAX_NUM_ENTRIES) {
     LOG(plog::error) << "Overflow in entryDB";
     return;
   }
   entriesDB[numEntries] = input;
-  idList[numEntries] = input.id;
 
   //  update member parameters
   numEntries++;
@@ -21,7 +18,7 @@ void Core::addEntry(EntryModel input) {
 }
 
 void Core::addEntrySort(EntryModel input) {
-  if (input.id >= MAX_NUM_ENTRIES) {
+  if (numEntries >= MAX_NUM_ENTRIES) {
     LOG(plog::error) << "Overflow in entryDB";
     return;
   }
@@ -38,7 +35,7 @@ void Core::addEntrySort(EntryModel input) {
 
 EntryModel *Core::getEntry(Uint16 id) {
   for (int entryIndex = 0; entryIndex < numEntries; entryIndex++) {
-    if (idList[entryIndex] == id) {
+    if (entriesDB[entryIndex].id == id) {
       //  return the pointer to the entry
       return &entriesDB[entryIndex];
     }
@@ -48,4 +45,9 @@ EntryModel *Core::getEntry(Uint16 id) {
   return nullptr;
 }
 
-void Core::generateReport() {}
+Uint32 Core::getTotalCredit() {
+  return totalCredit;
+}
+Uint32 Core::getTotalDebit() {
+  return totalDebit;
+}

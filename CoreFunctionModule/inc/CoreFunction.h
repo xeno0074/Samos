@@ -8,7 +8,6 @@ class Core {
   Uint8 numEntries;
   Uint32 totalCredit;
   Uint32 totalDebit;
-  Uint16 idList[MAX_NUM_ENTRIES];//  0 if the corresponding entry in entriesDB is empty (deleted)
 
   public:
   Core();
@@ -16,6 +15,11 @@ class Core {
 
   void addEntry(EntryModel input);
   void addEntrySort(EntryModel input);
+
   EntryModel *getEntry(Uint16 id);
+
+  Uint32 getTotalCredit();
+  Uint32 getTotalDebit();
+
   void generateReport();
 };
