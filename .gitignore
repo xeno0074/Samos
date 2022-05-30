@@ -102,32 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
-TestModule/cmake_install.cmake
-TestModule/CMakeCache.txt
-TestModule/compile_commands.json
-TestModule/Makefile
-TestModule/.cmake/*
-TestModule/Build/cmake_install.cmake
-TestModule/Build/Makefile
-TestModule/Build/nCpu
-TestModule/Build/CMakeFiles/*
-TestModule/CMakeFiles/*
-TestModule/CoreFunction/AluModule/cmake_install.cmake
-TestModule/CoreFunction/AluModule/libAlu.a
-TestModule/CoreFunction/AluModule/Makefile
-TestModule/CoreFunction/AluModule/CMakeFiles/*
-TestModule/DataModelModule/cmake_install.cmake
-TestModule/DataModelModule/libDataModel.a
-TestModule/DataModelModule/Makefile
-TestModule/DataModelModule/CMakeFiles/*
-TestModule/SampleModule/cmake_install.cmake
-TestModule/SampleModule/libSample.a
-TestModule/SampleModule/Makefile
-TestModule/SampleModule/CMakeFiles/*
-TestModule/SupportFunction/ClockModule/*
-TestModule/UtilityModule/cmake_install.cmake
-TestModule/UtilityModule/Makefile
-TestModule/UtilityModule/CMakeFiles/*
+
 /.idea/.gitignore
 /cmake-build-debug/*
 /cmake-build-release/*
@@ -137,6 +112,7 @@ TestModule/UtilityModule/CMakeFiles/*
 /.idea/Samosc.iml
 /.vscode/tasks.json
 /.idea/vcs.xml
+.idea/codeStyles/codeStyleConfig.xml
 
 # draw.io files
 *.drawio.png
