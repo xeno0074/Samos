@@ -2,8 +2,8 @@
 // Created by Arif Ahmed on 6/12/2021.
 //
 
-#ifndef VLADIS_SYSTEMDEFINES_H
-#define VLADIS_SYSTEMDEFINES_H
+#ifndef SAMOSC_SYSTEMDEFINES_H
+#define SAMOSC_SYSTEMDEFINES_H
 
 #include <cstdint>
 
@@ -28,4 +28,4 @@ static constexpr int MAX_COLUMNS = 6;
 static constexpr int MAX_NUM_ELEMENTS = 6;
 static constexpr int MAX_DATE_DATA_SIZE = 10;
 
-#endif// VLADIS_SYSTEMDEFINES_H
+#endif// SAMOSC_SYSTEMDEFINES_H
