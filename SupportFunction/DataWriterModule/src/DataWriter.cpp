@@ -20,6 +20,7 @@ void DataWriter::dumpCore(const char filePath[], Core &core) {
     return;
   }
 
+  file << "data,id,amount,txType,dateTime,tags" << std::endl;//  todo arif : remove
   for (int lineNumber = 0; lineNumber < core.numEntries; lineNumber++) {
     char entryStr[MAX_ENTRY_BYTES];
     core.entriesDB[lineNumber].toStr(entryStr);

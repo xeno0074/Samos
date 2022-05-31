@@ -18,7 +18,7 @@ TEST_CASE("Prototype Test") {
   PREPARE_TEST("\
                   --seed 547 \
                   --bytes_data 50 \
-                  --max_id 2001 \
+                  --max_id 3001 \
                   --max_amount 100 \
                   --values_txType \"1 0 0\" \
                   --min_year_date \"1 1 2020 12 00 AM\" \
