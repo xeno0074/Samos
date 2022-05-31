@@ -91,8 +91,6 @@ void DateModel::toStr(char dateStr[MAX_ENTRY_DATE_BYTES]) {
     case 22:
     case 23:
       hour -= 12;
-      meridian[0] = 'P';
-      break;
     case 12:
       meridian[0] = 'P';
       break;
