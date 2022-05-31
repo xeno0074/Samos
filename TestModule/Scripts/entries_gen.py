@@ -36,7 +36,7 @@ with open('TEST_FILES/entries.csv', "w", newline='') as entry_file, open('TEST_F
 
     for entry_id in range(max_id):
         tag = random.choice(values_tags)
-        entry = [utilities.random_str(random.randint(bytes_data // 4, bytes_data)), (max_id - entry_id - 1),
+        entry = [utilities.random_str(random.randint(bytes_data // 4, bytes_data)), entry_id,
                  random.randint(1, max_amount),
                  utilities.get_txType(values_txType, values_tags, tag),
                  utilities.random_date(min_year_date, max_year_date), tag]

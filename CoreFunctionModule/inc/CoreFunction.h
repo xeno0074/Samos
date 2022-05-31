@@ -5,7 +5,7 @@
 class Core {
   private:
   EntryModel entriesDB[MAX_NUM_ENTRIES];
-  Uint8 numEntries;
+  Uint16 numEntries;
   Uint32 totalCredit;
   Uint32 totalDebit;
 

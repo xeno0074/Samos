@@ -17,7 +17,7 @@ TEST_CASE("Prototype Test") {
   PREPARE_TEST("\
                   --seed 547 \
                   --bytes_data 50 \
-                  --max_id 40 \
+                  --max_id 2001 \
                   --max_amount 100 \
                   --values_txType \"1 0 0\" \
                   --min_year_date \"1 1 2020 12 00 AM\" \
@@ -28,10 +28,11 @@ TEST_CASE("Prototype Test") {
   DataReader dataReader("TEST_FILES/entries.csv", core);
 
 
-  char entryString[MAX_NUM_ENTRIES][MAX_ENTRY_BYTES];
-  for (int i = 0; i < 40; i++) {
-    core.getEntry(40 - i - 1)->toStr(entryString[i]);
-    printf("%s", entryString[i]);
+  const int numEntries = 500;
+  char entryString[numEntries][MAX_ENTRY_BYTES];
+  for (int i = 0; i < numEntries; i++) {
+    core.getEntry(i)->toStr(entryString[i]);
+    printf("%s\n", entryString[i]);
   }
 
   printf("Logs are stored in LOGS/logs.csv..\n");
