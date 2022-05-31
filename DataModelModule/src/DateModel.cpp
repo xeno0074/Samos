@@ -78,15 +78,27 @@ bool DateModel::operator>(const DateModel &date) {
 void DateModel::toStr(char dateStr[MAX_ENTRY_DATE_BYTES]) {
   // todo arif : optimize
   char meridian[]{"AM"};
-  if (hour > 12) {
-    hour -= 12;
-    meridian[0] = 'P';
-  }
-  if (hour == 0) {
-    hour += 12;
-  }
-  if (hour == 12) {
-    meridian[0] = 'P';
+  switch (hour) {
+    case 13:
+    case 14:
+    case 15:
+    case 16:
+    case 17:
+    case 18:
+    case 19:
+    case 20:
+    case 21:
+    case 22:
+    case 23:
+      hour -= 12;
+      meridian[0] = 'P';
+      break;
+    case 12:
+      meridian[0] = 'P';
+      break;
+    case 0:
+      hour += 12;
+      break;
   }
 
   snprintf(dateStr, MAX_ENTRY_DATE_BYTES, "%02d %02d %d %02d %02d %s", dd, mm, yyyy, hour, minutes, meridian);

@@ -43,8 +43,8 @@ with open('TEST_FILES/entries.csv', "w", newline='') as entry_file, open('TEST_F
         entry_writer.writerow(entry)
 
         #   GENERATE TC_01 - total credit and total debit with each entry
-        total_credit += (entry[3] == 'credit') * entry[2]
-        total_debit += (entry[3] == 'debit') * entry[2]
+        total_credit += (entry[3] == utilities.map_txType[1]) * entry[2]
+        total_debit += (entry[3] == utilities.map_txType[0]) * entry[2]
         tc01_writer.writerow([total_credit, total_debit])
 
 print('Generated entries in \'TEST_FILES/entries.csv\'..')

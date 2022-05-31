@@ -7,10 +7,16 @@ def random_str(length):
     return str.title(''.join(random.choices(string.ascii_lowercase, k=length)))
 
 
+# COMMENT ONE TO CHANGE TYPE
+# map_txType = ['debit', 'credit']
+#
+#
+map_txType = [0, 1]  # 0 -> debit, 1 -> credit
+
+
 def get_txType(values_txType, values_tags, given_tag):
     for index in range(len(values_tags)):
         if values_tags[index] is given_tag:
-            map_txType = ['debit', 'credit']
             return map_txType[int(values_txType[index])]
 
 

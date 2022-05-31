@@ -14,11 +14,7 @@ EntryModel::EntryModel(const char entryString[MAX_ENTRY_BYTES]) {
   snprintf(data, MAX_ENTRY_DATA_BYTES, elements[0]);
   id = std::stoi(elements[1]);
   amount = std::stoi(elements[2]);
-  if (!strcmp(elements[3], "credit")) {
-    txType = 1;
-  } else {
-    txType = 0;
-  }
+  txType = std::stoi(elements[3]);
   dateTime.setDate(elements[4]);
   snprintf(tag, MAX_ENTRY_DATA_BYTES, elements[5]);
 }
