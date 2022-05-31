@@ -8,11 +8,9 @@
 #include "CoreFunction.h"
 
 class CoreTest {// CoreTest class as Meyer's Singleton
-  Core *pCore;
+  Core core;
 
-  CoreTest() {
-    pCore = nullptr;
-  }
+  CoreTest() : core() {}
 
   public:
   static CoreTest &getInstance() {
@@ -23,12 +21,8 @@ class CoreTest {// CoreTest class as Meyer's Singleton
   CoreTest(const CoreTest &) = delete;
   void operator=(const CoreTest &) = delete;
 
-  Core *getCore() {
-    return pCore;
-  }
-
-  void replaceCore(Core *core) {
-    pCore = core;
+  Core &getCore() {
+    return core;
   }
 };
 

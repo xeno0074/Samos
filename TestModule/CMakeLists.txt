@@ -18,6 +18,7 @@ list(APPEND header_paths ${CMAKE_SOURCE_DIR}/CoreFunctionModule/test/)
 list(APPEND header_paths ${CMAKE_SOURCE_DIR}/UtilityModule/inc/)
 #list(APPEND header_paths ${CMAKE_SOURCE_DIR}/SupportFunction/ClockModule/inc/)
 list(APPEND header_paths ${CMAKE_SOURCE_DIR}/SupportFunction/DataReaderModule/inc/)
+list(APPEND header_paths ${CMAKE_SOURCE_DIR}/TestModule/TestHelper/inc/)
 list(APPEND header_paths ${CMAKE_SOURCE_DIR}/SupportFunction/DataWriterModule/inc/)
 
 set(tools_paths ${CMAKE_SOURCE_DIR}/TestModule/Tools/doctest/)
@@ -27,9 +28,11 @@ list(APPEND tools_paths ${CMAKE_SOURCE_DIR}/TestModule/Tools/plog/)
 include_directories(${header_paths})
 include_directories(${tools_paths})
 
+file(GLOB test_src ${CMAKE_CURRENT_SOURCE_DIR}/TestHelper/src/*.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Tools/doctest/*.cpp)
+
 #compile target
-add_executable(SampleTest SampleTest.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Tools/doctest/doctest.cpp)
-add_executable(FunctionTest FunctionTest.cpp ${CMAKE_CURRENT_SOURCE_DIR}/Tools/doctest/doctest.cpp)
+add_executable(SampleTest SampleTest.cpp ${test_src})
+add_executable(FunctionTest FunctionTest.cpp ${test_src})
 
 #link libraries
 target_link_libraries(SampleTest ${modules})
