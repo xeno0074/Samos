@@ -1,5 +1,6 @@
 #include "CoreFunction.h"
 #include "DataReader.h"
+#include "DataWriter.h"
 #include "Initializers/RollingFileInitializer.h"
 #include "Log.h"
 #include "Utilities.h"
@@ -27,13 +28,7 @@ TEST_CASE("Prototype Test") {
   Core core;
   DataReader dataReader("TEST_FILES/entries.csv", core);
 
-
-  const int numEntries = 500;
-  char entryString[numEntries][MAX_ENTRY_BYTES];
-  for (int i = 0; i < numEntries; i++) {
-    core.getEntry(i)->toStr(entryString[i]);
-    printf("%s\n", entryString[i]);
-  }
+  DataWriter dataWriter("TEST_FILES/out_entries.csv", core);
 
   printf("Logs are stored in LOGS/logs.csv..\n");
   printf("Prototype test complete..\n");

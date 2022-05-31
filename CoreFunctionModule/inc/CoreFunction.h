@@ -18,8 +18,11 @@ class Core {
 
   EntryModel *getEntry(Uint16 id);
 
+  Uint16 getNumEntries();
   Uint32 getTotalCredit();
   Uint32 getTotalDebit();
 
   void generateReport();
+
+  friend class DataWriter;
 };

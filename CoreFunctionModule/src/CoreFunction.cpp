@@ -51,3 +51,6 @@ Uint32 Core::getTotalCredit() {
 Uint32 Core::getTotalDebit() {
   return totalDebit;
 }
+Uint16 Core::getNumEntries() {
+  return numEntries;
+}

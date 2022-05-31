@@ -14,19 +14,17 @@ DataWriter::DataWriter(const char *filePath, Core &core) {
 }
 
 void DataWriter::dumpCore(const char filePath[], Core &core) {
-  std::fstream file(filePath);
+  std::fstream file(filePath, std::ios::out);
   if (!file.is_open()) {
     LOG(plog::fatal) << "Couldn't open file " << std::string(filePath);
     return;
   }
 
-  char entryString[MAX_ENTRY_BYTES];
-  file.getline(entryString, MAX_ENTRY_BYTES);
-  while (!file.eof()) {
-    file.getline(entryString, MAX_ENTRY_BYTES);
-    if (strcmp(entryString, "")) {
-      EntryModel entry(entryString);
-      core.addEntry(entry);
-    }
+  for (int lineNumber = 0; lineNumber < core.numEntries; lineNumber++) {
+    char entryStr[MAX_ENTRY_BYTES];
+    core.entriesDB[lineNumber].toStr(entryStr);
+    file << entryStr << std::endl;
   }
+
+  file.close();
 }

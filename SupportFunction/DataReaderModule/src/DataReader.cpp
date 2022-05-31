@@ -13,7 +13,7 @@ DataReader::DataReader(const char *filePath, Core &core) {
 }
 
 void DataReader::fillCore(const char filePath[], Core &core) {
-  std::fstream file(filePath);
+  std::fstream file(filePath, std::ios::in);
   if (!file.is_open()) {
     LOG(plog::fatal) << "Couldn't open file " << std::string(filePath);
     return;
@@ -29,4 +29,5 @@ void DataReader::fillCore(const char filePath[], Core &core) {
       core.addEntry(entry);
     }
   }
+  file.close();
 }

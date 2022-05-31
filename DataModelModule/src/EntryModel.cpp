@@ -26,5 +26,5 @@ EntryModel::EntryModel(const char entryString[MAX_ENTRY_BYTES]) {
 void EntryModel::toStr(char entryString[MAX_ENTRY_BYTES]) {
   char dateStr[MAX_ENTRY_DATE_BYTES];
   dateTime.toStr(dateStr);
-  snprintf(entryString, MAX_ENTRY_BYTES, "%s %u %u %u %s %s", data, id, amount, txType, dateStr, tag);
+  snprintf(entryString, MAX_ENTRY_BYTES, "%s,%u,%u,%u,%s,%s", data, id, amount, txType, dateStr, tag);
 }
