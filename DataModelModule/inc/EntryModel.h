@@ -13,4 +13,6 @@ class EntryModel {
 
   EntryModel();
   explicit EntryModel(const char entryString[MAX_ENTRY_BYTES]);
+
+  void toStr(char entryString[MAX_ENTRY_BYTES]);
 };

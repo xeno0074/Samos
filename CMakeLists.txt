@@ -7,5 +7,6 @@
  add_subdirectory(CoreFunctionModule)
  # add_subdirectory(SupportFunction/ClockModule)
  add_subdirectory(SupportFunction/DataReaderModule)
+ add_subdirectory(SupportFunction/DataWriterModule)
  add_subdirectory(DataModelModule)
  add_subdirectory(UtilityModule)
