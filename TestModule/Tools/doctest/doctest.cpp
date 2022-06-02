@@ -1,7 +1,7 @@
 #if defined(DOCTEST_CONFIG_IMPLEMENT) || !defined(DOCTEST_SINGLE_HEADER)
 
 #ifndef DOCTEST_SINGLE_HEADER
-#include "doctest_fwd.h"
+#include "doctest.h"
 #endif// DOCTEST_SINGLE_HEADER
 
 DOCTEST_CLANG_SUPPRESS_WARNING_WITH_PUSH("-Wunused-macros")

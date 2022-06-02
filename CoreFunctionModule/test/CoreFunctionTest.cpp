@@ -5,7 +5,7 @@
 #include "DataReader.h"
 #include "DataWriter.h"
 #include "Utilities.h"
-#include "doctest_fwd.h"
+#include "doctest.h"
 #include <cstdlib>
 
 TEST_CASE("CoreFunction.Test") {

@@ -3,7 +3,7 @@
 //
 #include "CoreFunctionTest.cpp"
 #include "Utilities.h"
-#include "doctest_fwd.h"
+#include "doctest.h"
 
 int main(int argc, char **argv) {
   return doctest::Context(argc, argv).run();
