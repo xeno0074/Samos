@@ -4,19 +4,21 @@
 #include "CoreFunctionTest.h"
 #include "DataReader.h"
 #include "DataWriter.h"
+#include "TestHelper.h"
 #include "Utilities.h"
 #include "doctest.h"
 #include <cstdlib>
 
 TEST_CASE("CoreFunction.Test") {
   Core &core = CoreTest::getInstance().getCore();
+  TestHelper testHelper;
 
   PREPARE_TEST("--max_id 3000");
 
-  SUBCASE("TC01.Test") {
+  SUBCASE("entries.Test") {
     DataReader dataReader("TEST_FILES/entries.csv", core);
     DataWriter dataWriter("TEST_FILES/out_entries.csv", core);
-  }
 
-  REQUIRE(1 != 0);
+    REQUIRE(testHelper.compareEntryFiles("TEST_FILES/entries.csv", "TEST_FILES/out_entries.csv") == 0);
+  }
 }

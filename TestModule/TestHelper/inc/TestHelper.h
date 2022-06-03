@@ -7,6 +7,7 @@
 
 class TestHelper {
   public:
+  int compareEntryFiles(const char filePath1[], const char filePath2[]);
   void compareReport();
 };
 
