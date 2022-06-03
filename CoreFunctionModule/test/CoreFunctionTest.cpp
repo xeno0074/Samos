@@ -8,6 +8,7 @@
 #include "Utilities.h"
 #include "doctest.h"
 #include <cstdlib>
+#include <sstream>
 
 TEST_CASE("CoreFunction.Test") {
   Core &core = CoreTest::getInstance().getCore();
