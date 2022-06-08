@@ -3,6 +3,7 @@
 
  set(CMAKE_CXX_STANDARD 17)
 
+ add_subdirectory(SamosCLI)
  add_subdirectory(TestModule)
  add_subdirectory(CoreFunctionModule)
  # add_subdirectory(SupportFunction/ClockModule)
