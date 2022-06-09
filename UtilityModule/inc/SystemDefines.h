@@ -28,6 +28,6 @@ static constexpr int MAX_COLUMNS = 6;
 static constexpr int MAX_NUM_ELEMENTS = 6;
 static constexpr int MAX_DATE_DATA_SIZE = 10;
 
-static constexpr int MAX_CLI_INPUT_SZ = 100;
+static constexpr int MAX_CLI_INPUT_SZ = 1000;
 
 #endif// SAMOSC_SYSTEMDEFINES_H

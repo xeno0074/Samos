@@ -6,79 +6,83 @@
 #include "DataWriter.h"
 #include "EntryModel.h"
 #include "Utilities.h"
-#include <cstring>
+#include <iomanip>
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 
 enum CmdType {
-  OTHER = 0,
-  EXIT,
-  ADD_ENTRY,
-  DEL_ENTRY,
-  SAVE,
-  SAVE_DEFAULT,
-  LOAD,
-  LOAD_DEFAULT,
-  HELP,
+  INVALID = 0,
+  EXIT = 1,
+  ADD_ENTRY = 2,
+  DEL_ENTRY = 3,
+  SAVE = 4,
+  SAVE_DEFAULT = 5,
+  LOAD = 6,
+  LOAD_DEFAULT = 7,
+  HELP = 8,
 };
 
 void printWelcome() {
   cout << "Welcome to SAMOS CLI" << endl;
 }
 
-CmdType parseLine(char line[MAX_CLI_INPUT_SZ], char *&cmdArgs) {
-  const char delimiter = ' ';
-  char *token;
-  token = strtok_s(line, &delimiter, &cmdArgs);
+CmdType getCmd(string &line, char cmdArgs[MAX_CLI_INPUT_SZ]) {
+  size_t cmdSz = line.find(' ');
+  if (cmdSz != string::npos) {
+    strcpy(cmdArgs, line.substr(cmdSz + 1).c_str());
+    line = line.substr(0U, cmdSz);
+  }
 
   //  exit
-  if (!strcmp(token, "exit")) {
+  if (line == "exit") {
     return EXIT;
   }
 
   //  add
-  if (!strcmp(token, "add")) {
+  if (line == "add") {
     return ADD_ENTRY;
   }
 
   //  delete
-  if (!strcmp(token, "delete")) {
+  if (line == "delete") {
     return DEL_ENTRY;
   }
 
   //  save
-  if (!strcmp(token, "save") && strlen(cmdArgs) == 0) {
+  if (line == "save" && strlen(cmdArgs) == 0) {
     return SAVE_DEFAULT;
   }
-  if (!strcmp(token, "save")) {
+  if (line == "save") {
     return SAVE;
   }
 
   //  load
-  if (!strcmp(token, "load") && strlen(cmdArgs) == 0) {
+  if (line == "load" && strlen(cmdArgs) == 0) {
     return LOAD_DEFAULT;
   }
-  if (!strcmp(token, "load")) {
+  if (line == "load") {
     return LOAD;
   }
 
   //  help
-  if (!strcmp(token, "help")) {
+  if (line == "help") {
     return HELP;
   }
-  return OTHER;
+
+  return INVALID;
 }
 
-void op_add_entry(Core &core, char *&cmdArgs) {
+void op_add_entry(Core &core, char *cmdArgs) {
   char entryString[MAX_ENTRY_BYTES];
-  strcpy_s(entryString, MAX_ENTRY_BYTES, cmdArgs);
+  snprintf(entryString, MAX_ENTRY_BYTES, cmdArgs);
   EntryModel entry(entryString);
   core.addEntry(entry);
 }
 
-void op_del_entry(Core &core, char *&cmdArgs) {}
+void op_del_entry(Core &core, char *cmdArgs) {}
 
 void op_save_core(Core &core) {
   DataWriter dataWriter("saved_entries.csv", core);
@@ -88,32 +92,32 @@ void op_load_core(Core &core) {
   DataReader dataReader("saved_entries.csv", core);
 }
 
-void op_save_core(Core &core, char *&cmdArgs) {
+void op_save_core(Core &core, char *cmdArgs) {
   DataWriter dataWriter(cmdArgs, core);
 }
 
-void op_load_core(Core &core, char *&cmdArgs) {
+void op_load_core(Core &core, char *cmdArgs) {
   DataReader dataReader(cmdArgs, core);
 }
 
 int main() {
   CmdType cmd;
-  char *cmdArgs;
-  char inputLine[MAX_CLI_INPUT_SZ];
+  char cmdArgs[MAX_CLI_INPUT_SZ];
+  string inputLine;
   Core core;
 
   printWelcome();
 
   while (true) {
-    cin.clear();
-    cmdArgs = nullptr;
+    //    cin.clear();
+    //    cmdArgs = nullptr;
 
-    printf(">");
+    cout << ">";
 
-    cin.getline(inputLine, MAX_CLI_INPUT_SZ);
-    cmd = parseLine(inputLine, cmdArgs);
+    getline(cin, inputLine);
+    cmd = getCmd(inputLine, cmdArgs);
 
-    printf("command code %06d\n", cmd);
+    cout << "command code " << setfill('0') << std::setw(5) << cmd << endl;
 
     switch (cmd) {
       case EXIT:
@@ -136,8 +140,8 @@ int main() {
       case LOAD:
         op_load_core(core, cmdArgs);
         break;
-      case OTHER:
-        printf("\"%s\" is an invalid command\n", inputLine);
+      case INVALID:
+        cout << "\"" << inputLine << "\" is not a valid command" << endl;
         break;
       default:
         return 0;
