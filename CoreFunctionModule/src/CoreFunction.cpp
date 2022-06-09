@@ -54,3 +54,6 @@ Uint32 Core::getTotalDebit() {
 Uint16 Core::getNumEntries() {
   return numEntries;
 }
+EntryModel Core::getLastEntry() {
+  return entriesDB[numEntries - 1];
+}

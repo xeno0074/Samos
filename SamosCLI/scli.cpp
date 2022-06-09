@@ -5,6 +5,8 @@
 #include "DataReader.h"
 #include "DataWriter.h"
 #include "EntryModel.h"
+#include "Initializers/RollingFileInitializer.h"
+#include "Log.h"
 #include "Utilities.h"
 #include <iomanip>
 #include <iostream>
@@ -14,19 +16,54 @@ using namespace std;
 
 
 enum CmdType {
-  INVALID = 0,
-  EXIT = 1,
-  ADD_ENTRY = 2,
-  DEL_ENTRY = 3,
-  SAVE = 4,
-  SAVE_DEFAULT = 5,
-  LOAD = 6,
-  LOAD_DEFAULT = 7,
-  HELP = 8,
+  INVALID = 0, // 0
+  EXIT,        // 1
+  ADD_ENTRY,   // 2
+  DEL_ENTRY,   // 3
+  SAVE,        // 4
+  SAVE_DEFAULT,// 5
+  LOAD,        // 6
+  LOAD_DEFAULT,// 7
+  HELP,        // 8
+  GET,         // 9
 };
 
 void printWelcome() {
-  cout << "Welcome to SAMOS CLI" << endl;
+  cout << "Welcome to SAMOS CLI" << endl
+       << "This tool was developed by Samos and is only meant to be used by its authorized users." << endl
+       << "For more information contact Samos Development Team." << endl
+       << "    "
+       << ">help for help menu" << endl
+       << "    "
+       << ">exit to exit SCLI" << endl;
+}
+
+void printEntryTable(char data[MAX_ENTRY_BYTES]) {
+  stringstream dataStream(data);
+  string elements[MAX_COLUMNS];
+  char word[MAX_ENTRY_DATA_BYTES];
+
+  int numCols = 0;
+  for (Uint8 columnIndex = 0; dataStream.getline(word, MAX_ENTRY_DATA_BYTES, ','); columnIndex++) {
+    elements[columnIndex] = word;
+    numCols++;
+  }
+
+  if (elements[3] == "0") {
+    elements[3] = "Debit";
+  }
+  if (elements[3] == "1") {
+    elements[3] = "Credit";
+  }
+  elements[numCols - 1].pop_back();
+
+  cout << "| " << setfill(' ') << setw(40) << left << elements[0]//
+       << "| " << setfill(' ') << setw(10) << left << elements[1]//
+       << "| " << setfill(' ') << setw(10) << left << elements[2]//
+       << "| " << setfill(' ') << setw(18) << left << elements[3]//
+       << "| " << setfill(' ') << setw(20) << left << elements[4]//
+       << "| " << setfill(' ') << setw(16) << left << elements[5]//
+       << "|" << endl;
 }
 
 CmdType getCmd(string &line, char cmdArgs[MAX_CLI_INPUT_SZ]) {
@@ -72,13 +109,16 @@ CmdType getCmd(string &line, char cmdArgs[MAX_CLI_INPUT_SZ]) {
     return HELP;
   }
 
+  //  get
+  if (line == "get") {
+    return GET;
+  }
+
   return INVALID;
 }
 
 void op_add_entry(Core &core, char *cmdArgs) {
-  char entryString[MAX_ENTRY_BYTES];
-  snprintf(entryString, MAX_ENTRY_BYTES, cmdArgs);
-  EntryModel entry(entryString);
+  EntryModel entry(cmdArgs);
   core.addEntry(entry);
 }
 
@@ -100,7 +140,56 @@ void op_load_core(Core &core, char *cmdArgs) {
   DataReader dataReader(cmdArgs, core);
 }
 
-int main() {
+void op_get(Core &core, char *cmdArgs) {
+  string param(cmdArgs);
+
+  size_t paramSz = param.find(' ');
+  if (paramSz != string::npos) {
+    strcpy(cmdArgs, param.substr(paramSz + 1).c_str());
+    param = param.substr(0U, paramSz);
+  } else {
+    cmdArgs[0] = '\0';
+  }
+
+  // get num
+  if (param == "num") {
+    // get number of entries
+    if (!strcmp(cmdArgs, "entries")) {
+      cout << core.getNumEntries() << endl;
+    }
+  }
+  // get total
+  if (param == "total") {
+    // get total credit
+    if (!strcmp(cmdArgs, "credit")) {
+      cout << core.getTotalCredit() << endl;
+    }
+    // get total debit
+    if (!strcmp(cmdArgs, "debit")) {
+      cout << core.getTotalDebit() << endl;
+    }
+    // get total amount
+    if (!strcmp(cmdArgs, "amount")) {
+      cout << int(core.getTotalCredit() - core.getTotalDebit()) << endl;
+    }
+  }
+  // get last
+  if (param == "last") {
+    // get last entry
+    if (!strcmp(cmdArgs, "entry")) {
+      if (core.getNumEntries() == 0) {
+        cout << "no available entries" << endl;
+        return;
+      }
+      char entryString[MAX_ENTRY_BYTES];
+      core.getLastEntry().toStr(entryString);
+      printEntryTable("Data,ID,Amount,Transaction Type,Date & Time,Tags");
+      printEntryTable(entryString);
+    }
+  }
+}
+
+int cliProc() {
   CmdType cmd;
   char cmdArgs[MAX_CLI_INPUT_SZ];
   string inputLine;
@@ -109,15 +198,12 @@ int main() {
   printWelcome();
 
   while (true) {
-    //    cin.clear();
-    //    cmdArgs = nullptr;
+    cmdArgs[0] = '\0';
 
-    cout << ">";
+    printf(">");
 
     getline(cin, inputLine);
     cmd = getCmd(inputLine, cmdArgs);
-
-    cout << "command code " << setfill('0') << std::setw(5) << cmd << endl;
 
     switch (cmd) {
       case EXIT:
@@ -140,11 +226,22 @@ int main() {
       case LOAD:
         op_load_core(core, cmdArgs);
         break;
+      case GET:
+        op_get(core, cmdArgs);
+        break;
       case INVALID:
         cout << "\"" << inputLine << "\" is not a valid command" << endl;
         break;
       default:
         return 0;
     }
+
+    printf("command code %05d\n", cmd);
   }
+}
+
+int main() {
+  plog::init(plog::debug, "logs.csv");
+
+  return cliProc();
 }

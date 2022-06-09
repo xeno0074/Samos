@@ -21,6 +21,7 @@ class Core {
   Uint16 getNumEntries();
   Uint32 getTotalCredit();
   Uint32 getTotalDebit();
+  EntryModel getLastEntry();
 
   void generateReport();
 
