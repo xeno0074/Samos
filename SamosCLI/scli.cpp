@@ -192,15 +192,15 @@ void op_get(Core &core, char *cmdArgs) {
   // get total
   if (param == "total") {
     // get total credit
-    if (!strcmp(cmdArgs, "credit")) {
+    if (!strcmp(cmdArgs, "credit") || !strcmp(cmdArgs, "c")) {
       cout << core.getTotalCredit() << endl;
     }
     // get total debit
-    if (!strcmp(cmdArgs, "debit")) {
+    if (!strcmp(cmdArgs, "debit") || !strcmp(cmdArgs, "d")) {
       cout << core.getTotalDebit() << endl;
     }
     // get total amount
-    if (!strcmp(cmdArgs, "amount")) {
+    if (!strcmp(cmdArgs, "amount") || !strcmp(cmdArgs, "a")) {
       cout << int(core.getTotalCredit() - core.getTotalDebit()) << endl;
     }
   }
