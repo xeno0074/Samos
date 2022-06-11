@@ -38,7 +38,7 @@ void printWelcome() {
        << ">exit to exit SCLI" << endl;
 }
 
-void printEntryTable(char data[MAX_ENTRY_BYTES]) {
+void printEntryTable(const char data[MAX_ENTRY_BYTES]) {
   stringstream dataStream(data);
   string elements[MAX_COLUMNS];
   char word[MAX_ENTRY_DATA_BYTES];
@@ -74,12 +74,12 @@ CmdType getCmd(string &line, char cmdArgs[MAX_CLI_INPUT_SZ]) {
   }
 
   //  exit
-  if (line == "exit") {
+  if (line == "exit" || line == "q") {
     return EXIT;
   }
 
   //  add
-  if (line == "add") {
+  if (line == "add" || line == "a") {
     return ADD_ENTRY;
   }
 
@@ -89,28 +89,28 @@ CmdType getCmd(string &line, char cmdArgs[MAX_CLI_INPUT_SZ]) {
   }
 
   //  save
-  if (line == "save" && strlen(cmdArgs) == 0) {
+  if ((line == "save" || line == "s") && strlen(cmdArgs) == 0) {
     return SAVE_DEFAULT;
   }
-  if (line == "save") {
+  if ((line == "save" || line == "s")) {
     return SAVE;
   }
 
   //  load
-  if (line == "load" && strlen(cmdArgs) == 0) {
+  if ((line == "load" || line == "l") && strlen(cmdArgs) == 0) {
     return LOAD_DEFAULT;
   }
-  if (line == "load") {
+  if ((line == "load" || line == "l")) {
     return LOAD;
   }
 
   //  help
-  if (line == "help") {
+  if (line == "help" || line == "h") {
     return HELP;
   }
 
   //  get
-  if (line == "get") {
+  if (line == "get" || line == "g") {
     return GET;
   }
 
@@ -234,6 +234,10 @@ int cliProc() {
     cout << ">";
 
     getline(cin, inputLine);
+
+    char inputBuffer[MAX_CLI_INPUT_SZ];
+    snprintf(inputBuffer, sizeof(inputBuffer), "%s", inputLine.c_str());
+
     cmd = getCmd(inputLine, cmdArgs);
 
     // execute command
@@ -266,9 +270,7 @@ int cliProc() {
         break;
       case INVALID:
         // execute command in shell
-        char buffer[MAX_CLI_INPUT_SZ];
-        snprintf(buffer, sizeof(buffer), "%s", inputLine.c_str());
-        system(buffer);
+        system(inputBuffer);
 
         cout << "scli: " << inputLine << ": command not found" << endl;
         break;
@@ -276,7 +278,7 @@ int cliProc() {
         return 0;
     }
 
-    LOGD << "command code " << setfill('0') << setw(5) << cmd;
+    LOGD << "command code " << setfill('0') << setw(5) << cmd << ": " << inputBuffer;
   }
 }
 
