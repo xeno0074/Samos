@@ -231,11 +231,12 @@ int cliProc() {
   while (true) {
     cmdArgs[0] = '\0';
 
-    printf(">");
+    cout << ">";
 
     getline(cin, inputLine);
     cmd = getCmd(inputLine, cmdArgs);
 
+    // execute command
     switch (cmd) {
       case EXIT:
         return 0;
@@ -264,13 +265,18 @@ int cliProc() {
         op_print_help_menu();
         break;
       case INVALID:
-        cout << "\"" << inputLine << "\" is not a valid command" << endl;
+        // execute command in shell
+        char buffer[MAX_CLI_INPUT_SZ];
+        snprintf(buffer, sizeof(buffer), "%s", inputLine.c_str());
+        system(buffer);
+
+        cout << "scli: " << inputLine << ": command not found" << endl;
         break;
       default:
         return 0;
     }
 
-    printf("command code %05d\n", cmd);
+    LOGD << "command code " << setfill('0') << setw(5) << cmd;
   }
 }
 
