@@ -1,4 +1,4 @@
-#TestModule/CmakeLists.txt
+#SamosCLI/CmakeLists.txt
 
 #set variables
 set(modules CoreFunction)
